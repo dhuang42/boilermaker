@@ -1,5 +1,6 @@
 // create the app and import middleware
 const express = require('express');
+const path = require('path');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -27,9 +28,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', require('./api')); // matches all requests to /api
 
 // handle 404 errors
-router.use('/users', require('./users')); // Users? Check.
-router.use('/puppies', require('./puppies')); // Puppies? Check.
-router.use('/kittens', require('./kittens')); // Kittens? Check.
+router.use('/users', require('./api/users')); // Users? Check.
+router.use('/puppies', require('./api/puppies')); // Puppies? Check.
+router.use('/kittens', require('./api/kittens')); // Kittens? Check.
 
 // Sloths?!?! Get outta town!
 router.use(function (req, res, next) {
